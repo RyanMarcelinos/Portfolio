@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Marcelino - Desenvolvedor Backend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0F172A',
+                        'cyan': '#22D3EE',
+                        'gray': '#64748B',
+                        'light-gray': '#F4F4F4',
+                        'dark-gray': '#1E293B'
+                    },
+                    animation: {
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'blink': 'blink 1s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'particles': 'particles 20s linear infinite',
+                        'focus-word': 'focusWord 0.5s ease-in-out',
+                        'goeey': 'goeey 0.6s ease-in-out'
+                    },
+                    keyframes: {
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' }
+                        },
+                        blink: {
+                            '50%': { borderColor: 'transparent' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            from: { boxShadow: '0 0 20px #22D3EE' },
+                            to: { boxShadow: '0 0 30px #22D3EE, 0 0 40px #22D3EE' }
+                        },
+                        particles: {
+                            '0%': { transform: 'translateY(0px) rotate(0deg)', opacity: '1' },
+                            '100%': { transform: 'translateY(-1000px) rotate(720deg)', opacity: '0' }
+                        },
+                        focusWord: {
+                            '0%': { 
+                                filter: 'blur(5px)',
+                                transform: 'scale(0.8)',
+                                borderColor: '#64748B'
+                            },
+                            '100%': { 
+                                filter: 'blur(0px)',
+                                transform: 'scale(1)',
+                                borderColor: '#22D3EE',
+                                boxShadow: '0 0 20px rgba(34, 211, 238, 0.6)'
+                            }
+                        },
+                        goeey: {
+                            '0%': { borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%' },
+                            '50%': { borderRadius: '30% 60% 70% 40%/50% 60% 30% 60%' },
+                            '100%': { borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-bg-light text-primary-dark font-sans overflow-x-hidden">
+    <!-- Background Particles -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Enhanced Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-bg-white/95 backdrop-blur-xl border-b border-accent-blue/20 shadow-lg transition-all duration-300">
+        <!-- Animated background gradient -->
+        <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/5 via-purple-100/20 to-accent-blue/5 opacity-0 transition-opacity duration-300 hover:opacity-100"></div>
+        
+        <div class="container mx-auto px-6 py-4 relative">
+            <div class="flex items-center justify-between">
+                <!-- Enhanced Logo -->
+                <div class="text-2xl font-bold text-accent-blue flex items-center group cursor-pointer">
+                    <div class="relative overflow-hidden">
+                        <div class="w-10 h-10 bg-gradient-to-br from-accent-blue to-purple-600 rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-all duration-300 shadow-lg">
+                            <i class="fas fa-code text-bg-white text-lg transform group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <!-- Floating particles around logo -->
+                        <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute -bottom-1 -left-1 w-2 h-2 bg-accent-blue rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"></div>
+                    </div>
+                    <span class="ml-3 text-accent-blue font-bold text-lg drop-shadow-lg">
+                        Ryan Marcelino
+                    </span>
+                    <div class="ml-2 flex flex-col space-y-1">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <div class="w-2 h-1 bg-accent-blue/60 rounded-full animate-pulse delay-200"></div>
+                        <div class="w-2 h-1 bg-purple-400/60 rounded-full animate-pulse delay-500"></div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Desktop Menu -->
+                <div class="hidden md:flex space-x-2" id="navItems">
+                    <a href="#home" class="nav-item group relative px-6 py-3 rounded-full text-primary-dark hover:text-accent-blue transition-all duration-300 font-medium">
+                        <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-purple-100/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                        <span class="relative z-10 flex items-center">
+                            <i class="fas fa-home mr-2 text-sm group-hover:animate-bounce"></i>
+                            Início
+                        </span>
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent-blue to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#sobre" class="nav-item group relative px-6 py-3 rounded-full text-primary-dark hover:text-accent-blue transition-all duration-300 font-medium">
+                        <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-purple-100/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                        <span class="relative z-10 flex items-center">
+                            <i class="fas fa-user mr-2 text-sm group-hover:animate-pulse"></i>
+                            Sobre
+                        </span>
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent-blue to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#projetos" class="nav-item group relative px-6 py-3 rounded-full text-primary-dark hover:text-accent-blue transition-all duration-300 font-medium">
+                        <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-purple-100/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                        <span class="relative z-10 flex items-center">
+                            <i class="fas fa-project-diagram mr-2 text-sm group-hover:animate-wiggle"></i>
+                            Projetos
+                        </span>
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent-blue to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#habilidades" class="nav-item group relative px-6 py-3 rounded-full text-primary-dark hover:text-accent-blue transition-all duration-300 font-medium">
+                        <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-purple-100/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                        <span class="relative z-10 flex items-center">
+                            <i class="fas fa-code mr-2 text-sm group-hover:animate-spin"></i>
+                            Habilidades
+                        </span>
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent-blue to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contato" class="nav-item group relative px-6 py-3 rounded-full text-primary-dark hover:text-accent-blue transition-all duration-300 font-medium">
+                        <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-purple-100/30 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                        <span class="relative z-10 flex items-center">
+                            <i class="fas fa-envelope mr-2 text-sm group-hover:animate-pulse"></i>
+                            Contato
+                        </span>
+                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-accent-blue to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Enhanced Mobile Menu Button -->
+                <button class="md:hidden relative p-3 rounded-xl bg-gradient-to-r from-accent-blue/10 to-purple-100/20 hover:from-accent-blue/20 hover:to-purple-100/30 transition-all duration-300 group" id="mobileMenuBtn">
+                    <div class="w-6 h-6 relative">
+                        <span class="block w-full h-0.5 bg-accent-blue transform transition-all duration-300 group-hover:rotate-45 group-hover:translate-y-2"></span>
+                        <span class="block w-full h-0.5 bg-accent-blue mt-1 transform transition-all duration-300 group-hover:opacity-0"></span>
+                        <span class="block w-full h-0.5 bg-accent-blue mt-1 transform transition-all duration-300 group-hover:-rotate-45 group-hover:-translate-y-2"></span>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Dropdown with animations -->
+            <div class="md:hidden absolute top-full left-0 right-0 bg-bg-white/98 backdrop-blur-xl border border-accent-blue/20 shadow-2xl rounded-2xl mt-2 mx-6 overflow-hidden hidden" id="mobileMenu">
+                <div class="py-4 space-y-2">
+                    <a href="#home" class="flex items-center px-6 py-3 text-primary-dark hover:text-accent-blue hover:bg-accent-blue/10 transition-all duration-300 group">
+                        <i class="fas fa-home mr-3 text-accent-blue group-hover:animate-bounce"></i>
+                        <span class="font-medium">Início</span>
+                    </a>
+                    <a href="#sobre" class="flex items-center px-6 py-3 text-primary-dark hover:text-accent-blue hover:bg-accent-blue/10 transition-all duration-300 group">
+                        <i class="fas fa-user mr-3 text-accent-blue group-hover:animate-pulse"></i>
+                        <span class="font-medium">Sobre</span>
+                    </a>
+                    <a href="#projetos" class="flex items-center px-6 py-3 text-primary-dark hover:text-accent-blue hover:bg-accent-blue/10 transition-all duration-300 group">
+                        <i class="fas fa-project-diagram mr-3 text-accent-blue group-hover:animate-wiggle"></i>
+                        <span class="font-medium">Projetos</span>
+                    </a>
+                    <a href="#habilidades" class="flex items-center px-6 py-3 text-primary-dark hover:text-accent-blue hover:bg-accent-blue/10 transition-all duration-300 group">
+                        <i class="fas fa-code mr-3 text-accent-blue group-hover:animate-spin"></i>
+                        <span class="font-medium">Habilidades</span>
+                    </a>
+                    <a href="#contato" class="flex items-center px-6 py-3 text-primary-dark hover:text-accent-blue hover:bg-accent-blue/10 transition-all duration-300 group">
+                        <i class="fas fa-envelope mr-3 text-accent-blue group-hover:animate-pulse"></i>
+                        <span class="font-medium">Contato</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative z-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="magic-bento">
+                <!-- Hero Card 1 - Main Info -->
+                <div class="magic-card hero-main">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                        <span class="text-bg-bg-white">Ryan</span>
+                        <span class="text-accent-blue">Marcelino</span>
+                    </h1>
+                    <div class="true-focus-text text-xl md:text-2xl text-gray mb-6" data-text="Desenvolvedor Backend | Desenvolvedor Web">
+                        Desenvolvedor Backend | Desenvolvedor Web
+                    </div>
+                    <p class="text-lg text-gray mb-8">
+                        Formado em Desenvolvimento de Sistemas
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="flex justify-center space-x-6 mb-8">
+                        <a href="https://github.com/RyanMarcelinos" target="_blank" 
+                           class="github-btn bg-bg-white/20 hover:bg-accent-blue/20 p-3 rounded-lg transition-all duration-300 group">
+                            <i class="fab fa-github text-2xl text-gray group-hover:text-accent-blue"></i>
+                        </a>
+                        <a href="https://br.linkedin.com/in/ryan-marcelino-rodrigues-868417369" target="_blank"
+                           class="social-btn bg-bg-white/20 hover:bg-accent-blue/20 p-3 rounded-lg transition-all duration-300 group">
+                            <i class="fab fa-linkedin text-2xl text-gray group-hover:text-accent-blue"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ryan.mp17/" target="_blank"
+                           class="social-btn bg-bg-white/20 hover:bg-accent-blue/20 p-3 rounded-lg transition-all duration-300 group">
+                            <i class="fab fa-instagram text-2xl text-gray group-hover:text-accent-blue"></i>
+                        </a>
+                        <a href="https://wa.me/5517991629421" target="_blank"
+                           class="social-btn bg-bg-white/20 hover:bg-accent-blue/20 p-3 rounded-lg transition-all duration-300 group">
+                            <i class="fab fa-whatsapp text-2xl text-gray group-hover:text-accent-blue"></i>
+                        </a>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#projetos" 
+                           class="bg-accent-blue hover:bg-accent-blue/80 text-bg-bg-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-cyan/25">
+                            Ver Meus Projetos
+                        </a>
+                        <a href="#contato" 
+                           class="border border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-bg-bg-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                            Entre em Contato
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Card 2 - Terminal -->
+                <div class="magic-card terminal-card">
+                    <div class="terminal-wrapper">
+                        <div class="terminal-head">
+                            <div class="terminal-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10" stroke="#006adc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#8e8e8e" stroke-width="2"/>
+                                </svg>
+                                <span>Terminal - Ryan</span>
+                            </div>
+                            <button class="copy-toggle" onclick="copyTerminalCode()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 4H12C9.79086 4 8 5.79086 8 8V16C8 18.2091 9.79086 20 12 20H20C22.2091 20 24 18.2091 24 16V8C24 5.79086 22.2091 4 20 4Z" stroke="#8e8e8e" stroke-width="2"/>
+                                    <path d="M4 20H20C20.5523 20 21 19.5523 21 19V9C21 8.44772 20.5523 8 20 8H16" stroke="#8e8e8e" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="cmd-line">
+                                <code>ryan@dev:~$</code>
+                            </div>
+                            <div class="cmd" data-cmd="cd ~/projetos/backend">
+                                <div class="cursor"></div>
+                            </div>
+                            <div class="cmd-line">
+                                <code>ryan@dev:~/projetos/backend$</code>
+                            </div>
+                            <div class="cmd" data-cmd="npm run start-dev">
+                                <div class="cursor"></div>
+                            </div>
+                            <div class="output">
+                                <div class="success">✓ Backend servidor iniciado com sucesso!</div>
+                                <div class="info">🌐 API rodando na porta 3000</div>
+                                <div class="info">📊 Banco de dados conectado</div>
+                                <div class="info">🚀 Sistema pronto para produção</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Card 3 - Quick Stats -->
+                <div class="magic-card stats-card spotlight-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-4">
+                        <i class="fas fa-chart-line mr-2"></i>Estatísticas Rápidas
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="stat-item text-center">
+                            <div class="text-2xl font-bold text-accent-blue">5+</div>
+                            <div class="text-sm text-gray">Tecnologias</div>
+                        </div>
+                        <div class="stat-item text-center">
+                            <div class="text-2xl font-bold text-accent-blue">3</div>
+                            <div class="text-sm text-gray">Projetos</div>
+                        </div>
+                        <div class="stat-item text-center">
+                            <div class="text-2xl font-bold text-accent-blue">B1</div>
+                            <div class="text-sm text-gray">Inglês</div>
+                        </div>
+                        <div class="stat-item text-center">
+                            <div class="text-2xl font-bold text-accent-blue">2025</div>
+                            <div class="text-sm text-gray">Formado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="magic-bento">
+                <!-- About Card 1 - Main -->
+                <div class="magic-card spotlight-card">
+                    <h2 class="text-3xl font-bold text-accent-blue mb-6">
+                        <i class="fas fa-user mr-3"></i>Sobre Mim
+                    </h2>
+                    <p class="text-lg text-gray mb-4 leading-relaxed">
+                        Olá! Eu sou Ryan Marcelino, um desenvolvedor backend apaixonado por programação e eletrônica. 
+                        Com formação em Desenvolvimento de Sistemas pela ETEC Philadelpho Gouvea Netto, tenho experiência 
+                        em diversas tecnologias e uma sólida base em desenvolvimento de sistemas de médio porte.
+                    </p>
+                    <p class="text-lg text-gray mb-4 leading-relaxed">
+                        Meus interesses abrangem desde o desenvolvimento de APIs eficientes até sistemas de gerenciamento 
+                        complexos. Estou sempre em busca de novos desafios e oportunidades de crescimento profissional.
+                    </p>
+                    <p class="text-lg text-gray leading-relaxed">
+                        Atualmente, estou aprimorando minhas habilidades em TypeScript e Node.js, expandindo 
+                        meu repertório tecnológico para atender às demandas do mercado moderno.
+                    </p>
+                </div>
+
+                <!-- About Card 2 - Education -->
+                <div class="magic-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-4">
+                        <i class="fas fa-graduation-cap mr-2"></i>Formação e Linguagens
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-accent-blue pl-4">
+                            <h4 class="font-semibold text-bg-bg-white">Desenvolvimento de Sistemas</h4>
+                            <p class="text-accent-blue">ETEC Philadelpho Gouvea Netto</p>
+                            <p class="text-gray text-sm">Formação completa em desenvolvimento de sistemas</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-accent-blue pl-4">
+                            <h4 class="font-semibold text-bg-bg-white">Introdução à Programação Orientada a Objetos (POO)</h4>
+                            <p class="text-accent-blue">fundação bradesco | escola virtual</p>
+                            <p class="text-gray text-sm">Curso de orientação a objetos</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-accent-blue pl-4">
+                            <h4 class="font-semibold text-bg-bg-white">Competência Transversal - Lógica de Programação</h4>
+                            <p class="text-accent-blue">SENAI</p>
+                            <p class="text-gray text-sm">Curso de logica de programação</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-accent-blue mb-4 mt-6">
+                        <i class="fas fa-globe mr-2"></i>Idiomas
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-bg-bg-white">Português</span>
+                            <span class="text-accent-blue font-semibold">Nativo</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-bg-bg-white">Inglês</span>
+                            <span class="text-accent-blue font-semibold">B1 → B2</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-bg-bg-white">Espanhol</span>
+                            <span class="text-accent-blue font-semibold">A2 → B1</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-bg-bg-white">Alemão</span>
+                            <span class="text-accent-blue font-semibold">A1 → A2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Card 3 - Soft Skills -->
+                <div class="magic-card spotlight-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-4">
+                        <i class="fas fa-users mr-2"></i>Habilidades Socioemocionais
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="skill-badge bg-bg-white/20 px-3 py-2 rounded-lg text-center hover:bg-accent-blue/20 transition-colors">
+                            <i class="fas fa-gavel text-accent-blue mb-1"></i>
+                            <div class="text-sm text-bg-bg-white">Assertividade</div>
+                        </div>
+                        <div class="skill-badge bg-bg-white/20 px-3 py-2 rounded-lg text-center hover:bg-accent-blue/20 transition-colors">
+                            <i class="fas fa-handshake text-accent-blue mb-1"></i>
+                            <div class="text-sm text-bg-bg-white">Compromisso Social</div>
+                        </div>
+                        <div class="skill-badge bg-bg-white/20 px-3 py-2 rounded-lg text-center hover:bg-accent-blue/20 transition-colors">
+                            <i class="fas fa-heart text-accent-blue mb-1"></i>
+                            <div class="text-sm text-bg-bg-white">Empatia</div>
+                        </div>
+                        <div class="skill-badge bg-bg-white/20 px-3 py-2 rounded-lg text-center hover:bg-accent-blue/20 transition-colors">
+                            <i class="fas fa-star text-accent-blue mb-1"></i>
+                            <div class="text-sm text-bg-bg-white">Autovalorização</div>
+                        </div>
+                        <div class="skill-badge bg-bg-white/20 px-3 py-2 rounded-lg text-center hover:bg-accent-blue/20 transition-colors">
+                            <i class="fas fa-comments text-accent-blue mb-1"></i>
+                            <div class="text-sm text-bg-bg-white">Comunicação</div>
+                        </div>
+                        <div class="skill-badge bg-bg-white/20 px-3 py-2 rounded-lg text-center hover:bg-accent-blue/20 transition-colors">
+                            <i class="fas fa-arrows-alt text-accent-blue mb-1"></i>
+                            <div class="text-sm text-bg-bg-white">Flexibilidade</div>
+                        </div>
+                        <div class="skill-badge bg-bg-white/20 px-3 py-2 rounded-lg text-center hover:bg-accent-blue/20 transition-colors">
+                            <i class="fas fa-shield-alt text-accent-blue mb-1"></i>
+                            <div class="text-sm text-bg-bg-white">Responsabilidade</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="habilidades" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-accent-blue mb-12">
+                <i class="fas fa-code mr-3"></i>Tecnologias & Habilidades
+            </h2>
+            
+            <div class="magic-bento">
+                <!-- Backend Languages -->
+                <div class="magic-card spotlight-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-6">
+                        <i class="fas fa-server mr-2"></i>Backend & Linguagens
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="tech-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors group">
+                            <i class="fab fa-python text-2xl text-accent-blue mb-2"></i>
+                            <div class="text-bg-bg-white font-semibold">Python</div>
+                            <div class="text-xs text-gray">Flask, APIs, automação</div>
+                        </div>
+                        <div class="tech-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors group">
+                            <i class="fab fa-js-square text-2xl text-accent-blue mb-2"></i>
+                            <div class="text-bg-bg-white font-semibold">JavaScript</div>
+                            <div class="text-xs text-gray">ES6+, Node.js básico</div>
+                        </div>
+                        <div class="tech-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors group">
+                            <i class="fab fa-php text-2xl text-accent-blue mb-2"></i>
+                            <div class="text-bg-bg-white font-semibold">PHP</div>
+                            <div class="text-xs text-gray">Desenvolvimento web</div>
+                        </div>
+                        <div class="tech-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors group">
+                            <i class="fab fa-java text-2xl text-accent-blue mb-2"></i>
+                            <div class="text-bg-bg-white font-semibold">Java</div>
+                            <div class="text-xs text-gray">POO, desktop apps</div>
+                        </div>
+                        <div class="tech-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors group">
+                            <i class="fab fa-cuttlefish text-2xl text-accent-blue mb-2"></i>
+                            <div class="text-bg-bg-white font-semibold">C++</div>
+                            <div class="text-xs text-gray">Programação estrutural</div>
+                        </div>
+                        <div class="tech-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors group">
+                            <i class="fab fa-js-square text-2xl text-accent-blue mb-2"></i>
+                            <div class="text-bg-bg-white font-semibold">TypeScript</div>
+                            <div class="text-xs text-gray">Em aprendizado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database & Web -->
+                <div class="magic-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-6">
+                        <i class="fas fa-database mr-2"></i>Banco de Dados & Frontend
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="db-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-bg-bg-white font-semibold">SQL</span>
+                                <span class="text-accent-blue text-sm">Avançado</span>
+                            </div>
+                            <div class="w-full bg-text-gray/30 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="db-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-bg-bg-white font-semibold">MongoDB</span>
+                                <span class="text-accent-blue text-sm">Intermediário</span>
+                            </div>
+                            <div class="w-full bg-text-gray/30 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="db-item bg-bg-white/20 p-3 rounded-lg hover:bg-accent-blue/20 transition-colors">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-bg-bg-white font-semibold">HTML/CSS</span>
+                                <span class="text-accent-blue text-sm">Avançado</span>
+                            </div>
+                            <div class="w-full bg-text-gray/30 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile & Learning -->
+                <div class="magic-card spotlight-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-6">
+                        <i class="fas fa-mobile-alt mr-2"></i>Mobile & Aprendendo
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="learning-item bg-bg-white/20 p-4 rounded-lg hover:bg-accent-blue/20 transition-colors">
+                            <div class="flex items-center justify-between mb-2">
+                                <div>
+                                    <i class="fab fa-android text-2xl text-accent-blue mb-2"></i>
+                                    <div class="text-bg-bg-white font-semibold">Desenvolvimento Mobile</div>
+                                </div>
+                                <span class="text-gray text-sm">Básico</span>
+                            </div>
+                            <p class="text-gray text-sm">Iniciando no desenvolvimento de aplicações móveis</p>
+                        </div>
+                        <div class="learning-item bg-bg-white/20 p-4 rounded-lg hover:bg-accent-blue/20 transition-colors">
+                            <div class="flex items-center justify-between mb-2">
+                                <div>
+                                    <i class="fab fa-node-js text-2xl text-accent-blue mb-2"></i>
+                                    <div class="text-bg-bg-white font-semibold">Node.js</div>
+                                </div>
+                                <span class="text-gray text-sm">Iniciando</span>
+                            </div>
+                            <p class="text-gray text-sm">Aprofundando conhecimentos em desenvolvimento backend</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projetos" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-accent-blue mb-12">
+                <i class="fas fa-project-diagram mr-3"></i>Meus Projetos
+            </h2>
+            
+            <div class="magic-bento">
+                <!-- TCC Project -->
+                <div class="magic-card project-card spotlight-card">
+                    <div class="project-image-container bg-bg-white/20 rounded-lg p-4 mb-4 overflow-hidden">
+                        <div class="image-wrapper w-full h-48 flex items-center justify-center bg-gradient-to-br from-[#4f46e8]/10 to-[#7c73e6]/10 rounded-lg border border-[#4f46e8]/20">
+                            <img 
+                                src="imgs/TCC.PNG" 
+                                alt="Sistema de Gerenciamento de Pecuária Leiteira"
+                                class="max-w-full max-h-full object-contain rounded-lg transition-transform duration-300 hover:scale-105"
+                            >
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#4f46e8] mb-3">
+                        <i class="fas fa-tractor mr-2"></i>Sistema de Gerenciamento de Pecuária Leiteira
+                    </h3>
+                    <p class="text-gray mb-4">
+                        Sistema completo para gerenciamento de propriedades leiteiras, incluindo controle de rebanho, 
+                        produção, saúde animal e relatórios gerenciais.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-[#4f46e8]/20 text-[#4f46e8] px-2 py-1 rounded text-xs">Python</span>
+                        <span class="bg-[#4f46e8]/20 text-[#4f46e8] px-2 py-1 rounded text-xs">Flask</span>
+                        <span class="bg-[#4f46e8]/20 text-[#4f46e8] px-2 py-1 rounded text-xs">SQL</span>
+                        <span class="bg-[#4f46e8]/20 text-[#4f46e8] px-2 py-1 rounded text-xs">Web</span>
+                        <span class="bg-[#4f46e8]/20 text-[#4f46e8] px-2 py-1 rounded text-xs">Bootstrap</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/RyanMarcelinos/TCC" target="_blank" 
+                        class="github-btn bg-[#4f46e8]/20 hover:bg-[#4f46e8] text-[#4f46e8] hover:text-white px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                            <i class="fab fa-github mr-2"></i>Ver Código
+                        </a>
+                        <button class="bg-bg-white/20 hover:bg-[#4f46e8]/20 text-bg-bg-white px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                            <i class="fas fa-eye mr-2"></i>Detalhes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scientific Notes Project -->
+                <div class="magic-card project-card spotlight-card">
+                    <div class="project-image-container bg-bg-white/20 rounded-lg p-4 mb-4 overflow-hidden">
+                        <div class="image-wrapper w-full h-48 flex items-center justify-center bg-gradient-to-br from-[#0da2e6]/10 to-[#4fc3f7]/10 rounded-lg border border-[#0da2e6]/20">
+                            <img 
+                                src="imgs/bloco_de_notas.PNG" 
+                                alt="Sistema de Anotações Científicas"
+                                class="max-w-full max-h-full object-contain rounded-lg transition-transform duration-300 hover:scale-105"
+                            >
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#0da2e6] mb-3">
+                        <i class="fas fa-flask mr-2"></i>Sistema de Anotações Científicas
+                    </h3>
+                    <p class="text-gray mb-4">
+                        Aplicação web desenvolvida em Flask para organizar e gerenciar notas de pesquisas científicas 
+                        com suporte a Markdown, categorias especializadas e análise automática.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-[#0da2e6]/20 text-[#0da2e6] px-2 py-1 rounded text-xs">Python</span>
+                        <span class="bg-[#0da2e6]/20 text-[#0da2e6] px-2 py-1 rounded text-xs">Flask</span>
+                        <span class="bg-[#0da2e6]/20 text-[#0da2e6] px-2 py-1 rounded text-xs">HTML</span>
+                        <span class="bg-[#0da2e6]/20 text-[#0da2e6] px-2 py-1 rounded text-xs">CSS</span>
+                        <span class="bg-[#0da2e6]/20 text-[#0da2e6] px-2 py-1 rounded text-xs">JSON</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/RyanMarcelinos/bloquinho-notas" target="_blank" 
+                        class="github-btn bg-[#0da2e6]/20 hover:bg-[#0da2e6] text-[#0da2e6] hover:text-white px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                            <i class="fab fa-github mr-2"></i>Ver Código
+                        </a>
+                        <button class="bg-bg-white/20 hover:bg-[#0da2e6]/20 text-bg-bg-white px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                            <i class="fas fa-eye mr-2"></i>Detalhes
+                        </button>
+                    </div>
+                </div>
+                <!-- JuniorsFood Project -->
+                <div class="magic-card project-card spotlight-card">
+                    <div class="project-image-container bg-bg-white/20 rounded-lg p-4 mb-4 overflow-hidden">
+                        <div class="image-wrapper w-full h-48 flex items-center justify-center bg-white/10 rounded">
+                            <img 
+                                src="imgs/cardapio.PNG" 
+                                alt="JuniorsFood - Sistema de Delivery"
+                                class="max-w-full max-h-full object-contain rounded-lg transition-transform duration-300 hover:scale-105"
+                            >
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-accent-blue mb-3">
+                        <i class="fas fa-hamburger mr-2 text-orange-400"></i>JuniorsFood - Sistema de Delivery
+                    </h3>
+                    <p class="text-gray mb-4">
+                        Sistema completo de cardápio digital para lanchonete com funcionalidades de pedidos online, 
+                        gerenciamento de usuários, administração de produtos e acompanhamento em tempo real.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-orange-400/20 text-orange-400 px-2 py-1 rounded text-xs">Python</span>
+                        <span class="bg-orange-400/20 text-orange-400 px-2 py-1 rounded text-xs">Web Framework</span>
+                        <span class="bg-orange-400/20 text-orange-400 px-2 py-1 rounded text-xs">SQLite</span>
+                        <span class="bg-orange-400/20 text-orange-400 px-2 py-1 rounded text-xs">HTML/CSS</span>
+                        <span class="bg-orange-400/20 text-orange-400 px-2 py-1 rounded text-xs">JavaScript</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/RyanMarcelinos/JuniorsFood" target="_blank" 
+                        class="github-btn bg-orange-400/20 hover:bg-orange-400 text-orange-400 hover:text-white px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                            <i class="fab fa-github mr-2"></i>Ver Código
+                        </a>
+                        <button class="bg-bg-white/20 hover:bg-orange-400/20 text-bg-bg-white px-4 py-2 rounded-lg transition-all duration-300 text-sm">
+                            <i class="fas fa-eye mr-2"></i>Detalhes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-accent-blue mb-12">
+                <i class="fas fa-envelope mr-3"></i>Entre em Contato
+            </h2>
+            
+            <div class="magic-bento">
+                <!-- Contact Form -->
+                <div class="magic-card contact-form-card spotlight-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-6">
+                        <i class="fab fa-whatsapp mr-2"></i>Mensagem via WhatsApp
+                    </h3>
+                    <form id="contactForm" class="space-y-4">
+                        <!-- WhatsApp Quick Contact -->
+                        <div class="mb-6 p-4 bg-gradient-to-r from-green-500 to-green-600 rounded-xl text-white text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                            <p class="text-sm mb-2">💬 Envie sua mensagem diretamente pelo WhatsApp!</p>
+                            <p class="text-xs opacity-90">Resposta rápida garantida</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Seu nome" required 
+                                   class="bg-bg-white/20 border border-gray/30 rounded-lg px-4 py-3 text-bg-bg-white placeholder-gray focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-cyan transition-colors">
+                            <input type="email" placeholder="Seu e-mail" required 
+                                   class="bg-bg-white/20 border border-gray/30 rounded-lg px-4 py-3 text-bg-bg-white placeholder-gray focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-cyan transition-colors">
+                        </div>
+                        <input type="text" placeholder="Assunto" required 
+                               class="w-full bg-bg-white/20 border border-gray/30 rounded-lg px-4 py-3 text-bg-bg-white placeholder-gray focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-cyan transition-colors">
+                        <textarea placeholder="Sua mensagem" rows="5" required 
+                                  class="w-full bg-bg-white/20 border border-gray/30 rounded-lg px-4 py-3 text-bg-bg-white placeholder-gray focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-cyan transition-colors resize-none"></textarea>
+                        <button type="submit" 
+                                class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 hover:scale-105 transform hover:-translate-y-0.5">
+                            <i class="fab fa-whatsapp mr-2 animate-pulse"></i>Enviar via WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="magic-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-6">
+                        <i class="fas fa-address-card mr-2"></i>Informações de Contato
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="contact-item bg-bg-white/20 p-4 rounded-lg hover:bg-accent-blue/20 transition-colors group cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fab fa-whatsapp text-2xl text-accent-blue mr-4"></i>
+                                <div>
+                                    <div class="text-bg-bg-white font-semibold">WhatsApp</div>
+                                    <div class="text-gray text-sm">(17) 99162-9421</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item bg-bg-white/20 p-4 rounded-lg hover:bg-accent-blue/20 transition-colors group cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fab fa-instagram text-2xl text-accent-blue mr-4"></i>
+                                <div>
+                                    <div class="text-bg-bg-white font-semibold">Instagram</div>
+                                    <div class="text-gray text-sm">@ryan.mp17</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item bg-bg-white/20 p-4 rounded-lg hover:bg-accent-blue/20 transition-colors group cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fab fa-discord text-2xl text-accent-blue mr-4"></i>
+                                <div>
+                                    <div class="text-bg-bg-white font-semibold">Discord</div>
+                                    <div class="text-gray text-sm">hannyakkkj</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item bg-bg-white/20 p-4 rounded-lg hover:bg-accent-blue/20 transition-colors group cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fab fa-linkedin text-2xl text-accent-blue mr-4"></i>
+                                <div>
+                                    <div class="text-bg-bg-white font-semibold">LinkedIn</div>
+                                    <div class="text-gray text-sm">Ryan Marcelino Rodrigues</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item bg-bg-white/20 p-4 rounded-lg hover:bg-accent-blue/20 transition-colors group cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fab fa-github text-2xl text-accent-blue mr-4"></i>
+                                <div>
+                                    <div class="text-bg-bg-white font-semibold">GitHub</div>
+                                    <div class="text-gray text-sm">@RyanMarcelinos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Availability -->
+                <div class="magic-card spotlight-card">
+                    <h3 class="text-xl font-semibold text-accent-blue mb-6">
+                        <i class="fas fa-clock mr-2"></i>Disponibilidade
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="status-item bg-bg-white/20 p-4 rounded-lg">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-bg-bg-white font-semibold">Status Atual</span>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                                    <span class="text-green-400 text-sm">Disponível</span>
+                                </div>
+                            </div>
+                            <p class="text-gray text-sm">
+                                Atualmente aberto a novas oportunidades e projetos freelance.
+                            </p>
+                        </div>
+                        <div class="bg-bg-white/20 p-4 rounded-lg">
+                            <h4 class="text-bg-bg-white font-semibold mb-2">
+                                <i class="fas fa-briefcase text-accent-blue mr-2"></i>Interesses
+                            </h4>
+                            <ul class="text-gray text-sm space-y-1">
+                                <li>• Desenvolvimento Backend</li>
+                                <li>• APIs e Microsserviços</li>
+                                <li>• Sistemas de Gerenciamento</li>
+                                <li>• Integração de Sistemas</li>
+                                <li>• Automação de Processos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-gray border-t border-accent-blue/20 py-8 relative z-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/RyanMarcelinos" target="_blank" 
+                   class="text-gray hover:text-accent-blue transition-colors">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="https://br.linkedin.com/in/ryan-marcelino-rodrigues-868417369" target="_blank"
+                   class="text-gray hover:text-accent-blue transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="https://www.instagram.com/ryan.mp17/" target="_blank"
+                   class="text-gray hover:text-accent-blue transition-colors">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="https://wa.me/5517991629421" target="_blank"
+                   class="text-gray hover:text-accent-blue transition-colors">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+            </div>
+            <p class="text-gray text-sm">
+                © 2025 Ryan Marcelino
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
