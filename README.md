@@ -2,7 +2,7 @@
 
 ## 🚀 Sobre o Projeto
 
-Este é o portfólio profissional de **Ryan Marcelino**, desenvolvedor backend e web apaixonado por programação. O site foi desenvolvido com as mais modernas tecnologias web, usando um design claro e moderno com psicologia das cores profissional para transmitir confiança e inovação.
+Este é meu portfólio, fiz para mostrar o que sou um desenvolvedor backend e web apaixonado por programação. O site foi desenvolvido com muito empenho e dedicação, usando um design claro e moderno com uma tentativa de uso de psicologia das cores para transmitir confiança e inovação.
 
 ## 🎨 Design e Cores - Tema Claro
 
@@ -22,7 +22,7 @@ Este é o portfólio profissional de **Ryan Marcelino**, desenvolvedor backend e
 ### Animações e Vida
 - **Velocidade Reduzida**: Animações mais suaves e profissionais
 - **Partículas Coloridas**: Elementos flutuantes em azul, roxo, verde, laranja e vermelho
-- **Efeitos Hover Avançados**: Transformações 3D e sombras dinâmicas
+- **Efeitos Hover**: Sombras dinâmicas
 - **Easter Egg Especial**: Código Konami com gatos voadores e efeitos rainbow 🐱
 
 ## 🛠️ Tecnologias Utilizadas
